@@ -1,2 +1,1 @@
-export {StatisticsProps} from './Statistics'
-
+export { StatisticsProps } from './Statistics';
