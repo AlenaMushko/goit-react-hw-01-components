@@ -1,29 +1,44 @@
-import React from 'react'
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { BsFillCircleFill } from 'react-icons/bs';
+import {
+  FriendSection,
+  FriendCard,
+  FriendAvatar,
+  FriendName,
+  FriendOnlineStatus,
+  FriendOfflineStatus,
+} from './FriendList.styled';
 
-
-export const FriendList = ({friends}) => {
+export const FriendList = ({ friends }) => {
   return (
-    <ul className="friend-list">{
-      friends.map(({ avatar, name, isOnline, id }) => (
-        <li className="item" key={id}>
-           {/* {isOnline ? <FriendOnlineStatus></FriendOnlineStatus> : <FriendOfflineStatus></FriendOfflineStatus>} */}
-          <span className="status">{isOnline}</span>
-          <img className="avatar" src={avatar} alt="User avatar" width="48" />
-          <p className="name">{name}</p>
-        </li>
+    <FriendSection>
+      {friends.map(({ avatar, name, isOnline, id }) => (
+        <FriendCard key={id}>
+          {isOnline ? (
+            <FriendOnlineStatus>
+              <BsFillCircleFill />
+            </FriendOnlineStatus>
+          ) : (
+            <FriendOfflineStatus>
+              <BsFillCircleFill />
+            </FriendOfflineStatus>
+          )}
+          <FriendAvatar src={avatar} alt="User avatar" />
+          <FriendName>{name}</FriendName>
+        </FriendCard>
       ))}
-    </ul>
-  )
-}
-
+    </FriendSection>
+  );
+};
 
 FriendList.propTypes = {
-  friends: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    avatar: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    isOnline: PropTypes.bool.isRequired,
-  }))
-}
- 
+  friends: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      avatar: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      isOnline: PropTypes.bool.isRequired,
+    })
+  ),
+};

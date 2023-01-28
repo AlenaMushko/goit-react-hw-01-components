@@ -1,21 +1,27 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Statistic, StatisticTitle } from "./Statistics.styled";
+import React from 'react';
+import PropTypes from 'prop-types';
+import {
+  StatisticSection,
+  StatisticTitle,
+  StatisticList,
+  StatisticItem,
+  StatisticLabel,
+  StatisticPercentage,
+} from './Statistics.styled';
 
-export const StatisticsProps = ({title, statistics}) => {
-  console.log(title);
+export const StatisticsProps = ({ title, statistics }) => {
   return (
-    <Statistic>
-       {title && <StatisticTitle>{title}</StatisticTitle>}
-      <ul className="stat-list">
+    <StatisticSection>
+      {title && <StatisticTitle>{title}</StatisticTitle>}
+      <StatisticList>
         {statistics.map(({ id, label, percentage }) => (
-          <li className="item" key={id}>
-            <span className="label">{label}</span>
-            <span className="percentage">{percentage}%</span>
-          </li>
+          <StatisticItem key={id} backgroundColor={getRandomHexColor()}>
+            <StatisticLabel>{label}</StatisticLabel>
+            <StatisticPercentage>{percentage}%</StatisticPercentage>
+          </StatisticItem>
         ))}
-      </ul>
-    </Statistic>
+      </StatisticList>
+    </StatisticSection>
   );
 };
 
@@ -30,4 +36,8 @@ StatisticsProps.propTypes = {
   ),
 };
 
-
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
+}
