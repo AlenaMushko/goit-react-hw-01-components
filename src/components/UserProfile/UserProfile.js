@@ -1,6 +1,9 @@
 import React from 'react'
 import PropTypes from "prop-types";
-import { UserSection, UserDescription, UserImg,UserName,UserText} from "./UserProfile.styled"
+import {
+  UserSection, UserDescription, UserImg, UserName, UserText,
+  UserStats, UserStat, UserLabel, UserQuantity
+} from "./UserProfile.styled"
 
 export const UserProfile = ({ avatar, username, tag, location, stats })=>{
   return (
@@ -14,20 +17,20 @@ export const UserProfile = ({ avatar, username, tag, location, stats })=>{
       <UserText>@{tag}</UserText>
       <UserText>{location}</UserText>
    </UserDescription>
-   <ul className="stats">
-    <li>
-      <span className="label">Followers</span>
-        <span className="quantity">{stats.followers}</span>
-    </li>
-    <li>
-      <span className="label">Views</span>
-      <span className="quantity">{stats.views}</span>
-    </li>
-    <li>
-      <span className="label">Likes</span>
-      <span className="quantity">{stats.likes}</span>
-    </li>
-  </ul> 
+   <UserStats>
+    <UserStat>
+      <UserLabel>Followers</UserLabel>
+        <UserQuantity>{stats.followers}</UserQuantity>
+    </UserStat>
+    <UserStat>
+      <UserLabel>Views</UserLabel>
+      <UserQuantity>{stats.views}</UserQuantity>
+    </UserStat>
+    <UserStat>
+      <UserLabel>Likes</UserLabel>
+      <UserQuantity>{stats.likes}</UserQuantity>
+    </UserStat>
+  </UserStats> 
  </UserSection>
  )
 };
