@@ -1,32 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BsFillCircleFill } from 'react-icons/bs';
-import {
-  FriendSection,
-  FriendCard,
-  FriendAvatar,
-  FriendName,
-  FriendOnlineStatus,
-  FriendOfflineStatus,
-} from './FriendList.styled';
+import { FriendListItem } from './FriendListItem';
+import { FriendSection } from './FriendList.styled';
 
 export const FriendList = ({ friends }) => {
   return (
     <FriendSection>
-      {friends.map(({ avatar, name, isOnline, id }) => (
-        <FriendCard key={id}>
-          {isOnline ? (
-            <FriendOnlineStatus>
-              <BsFillCircleFill />
-            </FriendOnlineStatus>
-          ) : (
-            <FriendOfflineStatus>
-              <BsFillCircleFill />
-            </FriendOfflineStatus>
-          )}
-          <FriendAvatar src={avatar} alt="User avatar" />
-          <FriendName>{name}</FriendName>
-        </FriendCard>
+      {friends.map(({ id, avatar, name, isOnline }) => (
+        <FriendListItem
+          key={id}
+          avatar={avatar}
+          name={name}
+          isOnline={isOnline}
+        />
       ))}
     </FriendSection>
   );

@@ -47,9 +47,5 @@ export const FriendName = styled.span`
 
 export const FriendOnlineStatus = styled.span`
   font-size: 24px;
-  color: green;
-`;
-export const FriendOfflineStatus = styled.span`
-  font-size: 24px;
-  color: tomato;
+  color: ${({ isOnline }) => (isOnline ? 'green' : 'tomato')};
 `;

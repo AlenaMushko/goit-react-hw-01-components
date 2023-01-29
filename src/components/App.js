@@ -14,13 +14,7 @@ import { Container } from './App.styled';
 export function App() {
   return (
     <Container>
-      <UserProfile
-        username={user.username}
-        tag={user.tag}
-        location={user.location}
-        avatar={user.avatar}
-        stats={user.stats}
-      />
+      <UserProfile user={user} />
       <StatisticsProps title="Upload stats" statistics={data} />
       <FriendList friends={friends} />
       <TransactionHistory items={transactions} />

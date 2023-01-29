@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import user from './user.json';
 import {
   UserSection,
   UserDescription,
@@ -12,7 +13,8 @@ import {
   UserQuantity,
 } from './UserProfile.styled';
 
-export const UserProfile = ({ avatar, username, tag, location, stats }) => {
+export const UserProfile = ({ user }) => {
+  const { username, avatar, tag, location, stats } = user;
   return (
     <UserSection>
       <UserDescription>
@@ -40,13 +42,15 @@ export const UserProfile = ({ avatar, username, tag, location, stats }) => {
 };
 
 UserProfile.propTypes = {
-  avatar: PropTypes.string.isRequired,
-  username: PropTypes.string.isRequired,
-  tag: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
-  stats: PropTypes.shape({
-    followers: PropTypes.number.isRequired,
-    views: PropTypes.number.isRequired,
-    likes: PropTypes.number.isRequired,
-  }),
+  user: PropTypes.shape({
+    avatar: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
+    tag: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    stats: PropTypes.shape({
+      followers: PropTypes.number.isRequired,
+      views: PropTypes.number.isRequired,
+      likes: PropTypes.number.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
